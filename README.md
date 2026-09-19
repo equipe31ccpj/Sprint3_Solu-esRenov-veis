@@ -463,7 +463,7 @@ Assim, o projeto demonstra uma aplicação prática da tecnologia no contexto da
 
 ---
 
-## 👥 Equipe
+## Equipe
 
 * **[Nome completo — RM]**
 * **[Nome completo — RM]**
@@ -472,6 +472,6 @@ Assim, o projeto demonstra uma aplicação prática da tecnologia no contexto da
 
 ---
 
-## 📌 Observação
+## Observação
 
 Este projeto foi desenvolvido como atividade acadêmica da FIAP, utilizando simulação no Tinkercad para demonstrar a integração dos componentes e o funcionamento da lógica de gerenciamento de recarga.
