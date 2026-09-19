@@ -67,9 +67,9 @@ O Arduino recebe essas informações e executa uma lógica de decisão, acionand
 
 | Condição              | LED          | Representação       |
 | --------------------- | ------------ | ------------------- |
-| Nenhum botão acionado | 🔴 Vermelho  | Sistema aguardando  |
-| Botão 1 acionado      | 🔵/🟢 Normal | Carregamento normal |
-| Botão 2 acionado      | 🟡 Amarelo   | Potência reduzida   |
+| Nenhum botão acionado |  Vermelho  | Sistema aguardando  |
+| Botão 1 acionado      | Normal | Carregamento normal |
+| Botão 2 acionado      | Amarelo   | Potência reduzida   |
 
 > **Observação:** a redução de potência é uma simulação visual da lógica de gerenciamento de demanda. O protótipo não realiza medição real de potência elétrica.
 
@@ -93,7 +93,7 @@ O Arduino recebe essas informações e executa uma lógica de decisão, acionand
 
 ## LEDs
 
-### LED normal
+### LED Azul
 
 ```text
 Arduino D8
@@ -181,10 +181,9 @@ Os botões utilizam a configuração `INPUT_PULLUP` do Arduino, não sendo neces
                        │
             ┌──────────┼──────────┐
             │          │          │
-            ▼          ▼          ▼
-          🔵/🟢       🟡         🔴
+            ▼          ▼          ▼      
            D8         D9         D10
-         Normal     Reduzido   Aguardando
+          Azul     Reduzido   Aguardando
 ```
 
 ---
@@ -200,12 +199,11 @@ Os botões utilizam a configuração `INPUT_PULLUP` do Arduino, não sendo neces
             NÃO          SIM
              │            │
              ▼            ▼
-        🔴 AGUARDAR   Horário de pico?
+         AGUARDAR   Horário de pico?
                          │       │
                         NÃO     SIM
                          │       │
-                         ▼       ▼
-                      🔵/🟢     🟡
+                         ▼       ▼ 
                       NORMAL   REDUZIDO
 ```
 
