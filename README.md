@@ -1,14 +1,15 @@
 # Sprint3_Solu-esRenov-veis
 
-#  GoodWe SmartCharge — Sistema Inteligente de Gestão de Recarga
+# GoodWe SmartCharge — Sistema Inteligente de Gestão de Recarga
 
-##  Sprint 3 — Prototipagem Funcional e Integração
+## 1. Título e Equipe
+
+**Projeto:** GoodWe SmartCharge — Sistema Inteligente de Gestão de Recarga de Veículos Elétricos
 
 **Instituição:** FIAP
 **Curso:** Ciência da Computação
 **Turma:** [PREENCHER]
-**Disciplina:** [PREENCHER]
-**Equipe:** [PREENCHER]
+
 **Integrantes:**
 
 * [Nome completo — RM]
@@ -18,200 +19,194 @@
 
 ---
 
-# 1.  Sobre o Projeto
+## 2. Objetivo do Projeto
 
-O **GoodWe SmartCharge** é um protótipo de sistema inteligente para gerenciamento de recarga de veículos elétricos.
+O projeto GoodWe SmartCharge apresenta um protótipo funcional de um sistema inteligente para gerenciamento da recarga de veículos elétricos.
 
-O projeto tem como objetivo demonstrar, por meio de um circuito simulado no **Tinkercad**, como um sistema automatizado pode identificar diferentes condições de operação e alterar o comportamento de uma estação de recarga.
+O objetivo é demonstrar a integração entre programação, eletrônica e automação para representar diferentes condições de funcionamento de uma estação de carregamento.
 
-Para isso, foi utilizado um **Arduino Uno**, dois botões como entradas e três LEDs como indicadores visuais das condições do sistema.
+O protótipo utiliza um Arduino Uno, dois botões e três LEDs. Os botões simulam informações recebidas pelo sistema e os LEDs representam visualmente as decisões tomadas pelo Arduino.
 
-O protótipo representa uma solução simplificada de gerenciamento de demanda, na qual o sistema pode adaptar o carregamento de acordo com as condições da rede elétrica.
-
----
-
-# 2. Objetivo
-
-O objetivo do protótipo é demonstrar a integração entre:
-
-* Programação;
-* Eletrônica;
-* Automação;
-* Gerenciamento de energia;
-* Eficiência energética;
-* Mobilidade elétrica.
-
-O sistema simula três situações principais:
-
-1. Veículo não conectado;
-2. Veículo conectado em condição normal;
-3. Horário de pico com redução simulada da potência de carregamento.
+O sistema também simula o gerenciamento de demanda durante um horário de pico, representando uma redução da potência de carregamento.
 
 ---
 
-# 3. Funcionamento do Sistema
+## 3. Esquema de Integração
 
-O sistema utiliza dois botões como entradas.
+O funcionamento do sistema ocorre através da integração entre entradas, processamento e saídas.
 
-### Botão 1 — Veículo conectado
+### Entradas
 
-Representa a conexão de um veículo elétrico à estação de carregamento.
+* **Botão 1 — D2:** representa a conexão de um veículo elétrico.
+* **Botão 2 — D3:** representa um horário de pico da rede elétrica.
 
-### Botão 2 — Horário de pico
+### Processamento
 
-Representa uma situação em que existe maior demanda de energia na rede elétrica.
+O **Arduino Uno** recebe as informações dos botões e executa a lógica de controle programada.
 
-O Arduino recebe essas informações e executa uma lógica de decisão, acionando um dos três LEDs.
+### Saídas
 
-### Estados do sistema
+* **LED D8:** representa o carregamento normal.
+* **LED D9:** representa a redução simulada da potência durante o horário de pico.
+* **LED D10:** representa o sistema aguardando a conexão de um veículo.
 
-| Condição              | LED          | Representação       |
-| --------------------- | ------------ | ------------------- |
-| Nenhum botão acionado |  Vermelho  | Sistema aguardando  |
-| Botão 1 acionado      | Normal | Carregamento normal |
-| Botão 2 acionado      | Amarelo   | Potência reduzida   |
+### Diagrama
 
-> **Observação:** a redução de potência é uma simulação visual da lógica de gerenciamento de demanda. O protótipo não realiza medição real de potência elétrica.
+![Diagrama de integração](diagramas/diagrama-integracao.png)
+
+### Ligações principais
+
+```text
+Botão 1 → D2 → Veículo conectado
+
+Botão 2 → D3 → Horário de pico
+
+D8 → LED normal
+D9 → LED amarelo
+D10 → LED vermelho
+
+Todos os LEDs utilizam resistores de 220 Ω e possuem conexão ao GND.
+```
 
 ---
 
-# 4. Componentes Utilizados
-
-| Componente     | Quantidade | Função                              |
-| -------------- | ---------: | ----------------------------------- |
-| Arduino Uno    |          1 | Controlador do sistema              |
-| Push Button    |          2 | Simulação das condições de operação |
-| LED azul/verde |          1 | Indicação de carregamento normal    |
-| LED amarelo    |          1 | Indicação de potência reduzida      |
-| LED vermelho   |          1 | Indicação de sistema aguardando     |
-| Resistor 220 Ω |          3 | Proteção dos LEDs                   |
-| Fios           |   Diversos | Conexão dos componentes             |
-
----
-
-# 5. Ligações do Circuito
-
-## LEDs
-
-### LED Azul
+## 4. Fluxograma
 
 ```text
-Arduino D8
-    ↓
-Resistor 220 Ω
-    ↓
-Perna longa do LED
-    ↓
-Perna curta
-    ↓
-GND
-```
-
-### LED amarelo
-
-```text
-Arduino D9
-    ↓
-Resistor 220 Ω
-    ↓
-Perna longa do LED
-    ↓
-Perna curta
-    ↓
-GND
-```
-
-### LED vermelho
-
-```text
-Arduino D10
-    ↓
-Resistor 220 Ω
-    ↓
-Perna longa do LED
-    ↓
-Perna curta
-    ↓
-GND
-```
-
-## Botões
-
-### Botão 1 — Veículo
-
-```text
-D2 → Botão → GND
-```
-
-### Botão 2 — Horário de pico
-
-```text
-D3 → Botão → GND
-```
-
-Os botões utilizam a configuração `INPUT_PULLUP` do Arduino, não sendo necessários resistores externos para eles.
-
----
-
-# 6. Diagrama de Integração
-
-```text
-                 ESTAÇÃO DE RECARGA
-                        │
-                        ▼
-              ┌─────────────────┐
-              │    ARDUINO UNO  │
-              │                 │
-              │ Lógica de       │
-              │ controle        │
-              └────────┬────────┘
-                       │
-             ┌─────────┴─────────┐
-             │                   │
-             ▼                   ▼
-       ┌───────────┐       ┌───────────┐
-       │  BOTÃO 1  │       │  BOTÃO 2  │
-       │   D2      │       │    D3     │
-       │  Veículo  │       │ Horário   │
-       │ conectado │       │ de pico   │
-       └───────────┘       └───────────┘
+                    INÍCIO
                        │
                        ▼
-                LÓGICA DE DECISÃO
+              ┌─────────────────┐
+              │ Botão 2 ativo?  │
+              └────────┬────────┘
                        │
-            ┌──────────┼──────────┐
-            │          │          │
-            ▼          ▼          ▼      
-           D8         D9         D10
-          Azul     Reduzido   Aguardando
+                 ┌─────┴─────┐
+                SIM          NÃO
+                 │             │
+                 ▼             ▼
+           LED AMARELO   ┌─────────────────┐
+          Potência         │ Botão 1 ativo?  │
+          reduzida         └────────┬────────┘
+                                    │
+                              ┌─────┴─────┐
+                             SIM          NÃO
+                              │             │
+                              ▼             ▼
+                             LED D8       LED D10
+                           Normal        Aguardando
 ```
+
+A lógica do sistema verifica os botões e altera automaticamente o estado dos LEDs de acordo com a condição identificada.
 
 ---
 
-# 7. Fluxo de Funcionamento
+## 5. Imagens do Protótipo
+
+### Circuito completo
+
+![Circuito completo](imagens/circuito-completo.png)
+
+### Sistema aguardando
+
+Nenhum botão acionado.
+
+![Teste vermelho](imagens/teste-vermelho.png)
+
+### Carregamento normal
+
+Botão do veículo acionado.
+
+![Teste normal](imagens/teste-normal.png)
+
+### Horário de pico
+
+Botão de horário de pico acionado.
+
+![Teste amarelo](imagens/teste-amarelo.png)
+
+---
+
+## 6. Justificativa Técnica
+
+O **Arduino Uno** foi utilizado como controlador do protótipo porque permite receber informações por meio das entradas digitais e controlar componentes de saída através da programação.
+
+Os **botões** foram utilizados para representar condições de operação da estação de carregamento. O primeiro representa a conexão de um veículo elétrico e o segundo representa um período de horário de pico.
+
+Os **LEDs** foram utilizados para apresentar visualmente os diferentes estados do sistema.
+
+O LED conectado ao pino D8 representa o carregamento normal. O LED conectado ao D9 representa a redução simulada da potência durante o horário de pico. O LED conectado ao D10 representa o sistema aguardando a conexão de um veículo.
+
+Os **resistores de 220 Ω** são utilizados para limitar a corrente dos LEDs e proteger os componentes.
+
+A integração desses elementos permite demonstrar uma lógica de automação na qual as entradas são processadas pelo Arduino e geram respostas automáticas nas saídas.
+
+---
+
+## 7. Funcionamento e Resultados
+
+Foram realizados testes para verificar o funcionamento do protótipo.
+
+| Situação            | Entrada      | Resultado    |
+| ------------------- | ------------ | ------------ |
+| Sistema aguardando  | Nenhum botão |  LED D10   |
+| Carregamento normal | Botão 1      |  LED D8 |
+| Horário de pico     | Botão 2      |  LED D9    |
+
+Os testes demonstraram que o Arduino consegue receber diferentes entradas e alterar automaticamente as saídas de acordo com a programação.
+
+A redução de potência apresentada pelo LED amarelo é uma **simulação** da estratégia de gerenciamento de demanda. O protótipo não realiza medição ou controle de potência elétrica real.
+
+---
+
+## 8. Sustentabilidade, Automação e Eficiência Energética
+
+O protótipo está relacionado ao gerenciamento inteligente de energia porque simula uma alteração no funcionamento do carregamento durante um período de maior demanda.
+
+Quando o sistema identifica a condição de horário de pico, o LED amarelo é acionado para representar uma redução da potência de carregamento.
+
+Em uma aplicação real, essa lógica poderia ser integrada a sensores, medidores de energia e sistemas de geração renovável, permitindo que o carregamento fosse adaptado de acordo com a disponibilidade de energia e as condições da rede.
+
+Dessa forma, o protótipo demonstra conceitos de:
+
+* **Automação:** o sistema responde automaticamente às entradas.
+* **Eficiência energética:** simulação de redução da potência em horário de pico.
+* **Sustentabilidade:** gerenciamento mais eficiente do uso de energia.
+* **Inteligência:** utilização de condições de entrada para determinar uma ação.
+
+---
+
+## 9. Conexão com os Conteúdos do Curso
+
+O projeto integra conhecimentos relacionados à programação, eletrônica e automação.
+
+Na programação, foram utilizadas estruturas condicionais e funções do Arduino, como:
+
+```cpp
+if
+else if
+else
+digitalRead()
+digitalWrite()
+pinMode()
+```
+
+Na parte de eletrônica, foram utilizados Arduino Uno, LEDs, resistores, botões, entradas digitais, saídas digitais e GND.
+
+Na automação, o sistema recebe informações dos botões, processa essas informações e altera automaticamente os LEDs.
+
+Esses conceitos são aplicados ao contexto de estações de carregamento de veículos elétricos e gerenciamento de energia.
+
+---
+
+## 10. Código-Fonte
+
+O código utilizado no protótipo está disponível no arquivo:
 
 ```text
-                 INÍCIO
-                    │
-                    ▼
-          Veículo conectado?
-             │            │
-            NÃO          SIM
-             │            │
-             ▼            ▼
-         AGUARDAR   Horário de pico?
-                         │       │
-                        NÃO     SIM
-                         │       │
-                         ▼       ▼ 
-                      NORMAL   REDUZIDO
+codigo/smartcharge.ino
 ```
 
----
-
-# 8. Código
-
-O código utilizado no protótipo foi desenvolvido em Arduino/C++.
+Código utilizado:
 
 ```cpp
 const int botaoVeiculo = 2;
@@ -233,7 +228,6 @@ void setup() {
 
 void loop() {
 
-  // Primeiro verifica o botão de pico
   if (digitalRead(botaoPico) == LOW) {
 
     digitalWrite(ledNormal, LOW);
@@ -242,7 +236,6 @@ void loop() {
 
   }
 
-  // Depois verifica o veículo
   else if (digitalRead(botaoVeiculo) == LOW) {
 
     digitalWrite(ledNormal, HIGH);
@@ -251,7 +244,6 @@ void loop() {
 
   }
 
-  // Nenhum botão
   else {
 
     digitalWrite(ledNormal, LOW);
@@ -263,151 +255,28 @@ void loop() {
 
 ---
 
-# 9. Testes Realizados
+## 11. Instruções de Funcionamento
 
-Foram realizados testes para verificar o funcionamento dos componentes e a integração do sistema.
+Para executar o protótipo:
 
-## Teste 1 — Sistema aguardando
-
-**Ação:** nenhum botão pressionado.
-
-**Resultado esperado:**
-
- LED vermelho aceso.
-
-**Resultado obtido:** funcionamento confirmado.
+1. Abra o circuito no Tinkercad.
+2. Inicie a simulação.
+3. Com nenhum botão acionado, o LED vermelho deve permanecer aceso.
+4. Pressione o botão de veículo conectado para acionar o LED normal.
+5. Pressione o botão de horário de pico para acionar o LED amarelo.
+6. Observe a alteração automática dos estados dos LEDs.
 
 ---
 
-## Teste 2 — Carregamento normal
+## 12. Link do Tinkercad
 
-**Ação:** pressionar o botão de veículo conectado.
-
-**Resultado esperado:**
-
- LED normal aceso.
-
-**Resultado obtido:** funcionamento confirmado.
-
----
-
-## Teste 3 — Horário de pico
-
-**Ação:** pressionar o botão correspondente ao horário de pico.
-
-**Resultado esperado:**
-
- LED amarelo aceso.
-
-**Resultado obtido:** funcionamento confirmado.
-
-
-# 10. Sustentabilidade e Eficiência Energética
-
-O protótipo está relacionado ao conceito de eficiência energética porque simula uma estratégia de gerenciamento de demanda.
-
-Durante um período de maior demanda elétrica, o sistema altera seu estado e representa visualmente uma redução da potência de carregamento.
-
-Em uma implementação real, essa lógica poderia ser integrada a sensores de consumo, medidores inteligentes, sistemas de geração solar e informações da rede elétrica.
-
-Dessa maneira, seria possível adaptar automaticamente a operação dos carregadores às condições de disponibilidade de energia.
-
----
-
-# 11. Automação e Inteligência
-
-O protótipo demonstra automação porque o Arduino recebe informações das entradas e modifica automaticamente as saídas.
-
-A decisão é realizada por meio de uma estrutura condicional:
-
-```text
-Entrada → Processamento → Decisão → Saída
-```
-
-Exemplo:
-
-```text
-Botão acionado
-      ↓
-Arduino identifica a condição
-      ↓
-Executa a lógica
-      ↓
-Aciona o LED correspondente
-```
-
-Essa estrutura pode ser expandida futuramente para utilizar sensores e dados reais.
-
----
-
-# 12. Relação com os Conteúdos do Curso
-
-O projeto utiliza conhecimentos de diferentes áreas.
-
-### Programação
-
-Foram utilizados conceitos como:
-
-* Variáveis;
-* Estruturas condicionais;
-* `if`;
-* `else if`;
-* `else`;
-* `digitalRead()`;
-* `digitalWrite()`;
-* `pinMode()`.
-
-### Eletrônica
-
-Foram utilizados:
-
-* Arduino;
-* LEDs;
-* Resistores;
-* Push buttons;
-* Entradas digitais;
-* Saídas digitais;
-* GND.
-
-### Automação
-
-O sistema realiza decisões automaticamente de acordo com as condições recebidas pelos botões.
-
-### Sustentabilidade
-
-O gerenciamento da demanda representa uma estratégia de utilização mais eficiente da energia durante períodos de maior consumo.
-
----
-
-# 13. Possíveis Melhorias Futuras
-
-O protótipo desenvolvido é uma versão inicial e pode ser expandido.
-
-Entre as possíveis melhorias estão:
-
-* Utilização de sensores reais;
-* Medição real de corrente e tensão;
-* Medição do consumo energético;
-* Integração com painéis solares;
-* Monitoramento de geração de energia renovável;
-* Controle real da potência do carregador;
-* Display para apresentação dos dados;
-* Aplicativo ou dashboard para acompanhamento;
-* Integração com banco de dados;
-* Utilização de inteligência artificial para previsão de demanda;
-* Comunicação com sistemas externos.
-
----
-
-# 14. Simulação no Tinkercad
-
-**Link do projeto:**
+**Circuito utilizado na simulação:**
 
 [COLE AQUI O LINK DO TINKERCAD]
 
 ---
 
-# 15. Estrutura do Repositório
+## Estrutura do Repositório
 
 ```text
 GoodWe-SmartCharge/
@@ -420,56 +289,10 @@ GoodWe-SmartCharge/
 ├── diagramas/
 │   └── diagrama-integracao.png
 │
-├── imagens/
-│   ├── circuito-completo.png
-│   ├── teste-vermelho.png
-│   ├── teste-normal.png
-│   └── teste-amarelo.png
-│
-└── documentos/
-    └── Sprint3.pdf
+└── imagens/
+    ├── circuito-completo.png
+    ├── teste-vermelho.png
+    ├── teste-normal.png
+    └── teste-amarelo.png
 ```
 
----
-
-# 16. Vídeo da Demonstração
-
-O vídeo apresenta:
-
-1. Introdução do projeto;
-2. Apresentação dos componentes;
-3. Explicação da integração;
-4. Teste do sistema aguardando;
-5. Teste do carregamento normal;
-6. Teste do horário de pico;
-7. Explicação da eficiência energética;
-8. Conclusão do protótipo.
-
-**Link do vídeo:** [INSERIR LINK, SE NECESSÁRIO]
-
----
-
-# 17. Conclusão
-
-O projeto GoodWe SmartCharge apresentou um protótipo funcional de uma estação inteligente de gerenciamento de recarga de veículos elétricos.
-
-Através do Arduino, foi possível integrar entradas e saídas para simular diferentes condições de operação. Os botões representam informações do ambiente, enquanto os LEDs apresentam visualmente as decisões tomadas pelo sistema.
-
-O protótipo demonstra os conceitos de automação, programação, eletrônica e gerenciamento de energia. Apesar de utilizar uma simulação, sua estrutura pode ser ampliada para uma solução real utilizando sensores, medidores de energia, fontes renováveis e sistemas inteligentes de controle.
-
-Assim, o projeto demonstra uma aplicação prática da tecnologia no contexto da mobilidade elétrica e da eficiência energética.
-
----
-
-## Equipe
-
-* **[Nome completo — RM]**
-* **[Nome completo — RM]**
-* **[Nome completo — RM]**
-* **[Nome completo — RM]**
-
----
-
-## Observação
-
-Este projeto foi desenvolvido como atividade acadêmica da FIAP, utilizando simulação no Tinkercad para demonstrar a integração dos componentes e o funcionamento da lógica de gerenciamento de recarga.
