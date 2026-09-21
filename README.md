@@ -6,10 +6,10 @@
 
 ### Equipe
 
-* Nome completo — RM
-* Nome completo — RM
-* Nome completo — RM
-* Turma: [preencher]
+* Maria Eduarda Rocha Benjamim — RM570554
+* Akin Alexandre Mendes  Martins — RM572573
+* Pedro Henrique neves — RM571382
+* Turma: [1CCPJ]
 
 ---
 
