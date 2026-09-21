@@ -147,7 +147,15 @@ O protótipo foi desenvolvido e testado utilizando o Tinkercad.
 [https://www.tinkercad.com/things/h5m8NsnMyd2-goodwe-smartcharge]
 
 ---
+## Vídeo de Demonstração
 
+O vídeo apresenta o funcionamento do protótipo, a integração dos componentes e os diferentes estados do sistema.
+
+**Link do vídeo:**  
+
+[https://youtu.be/2_N5-vOPukM]
+
+---
 ## Estrutura do Projeto
 
 ```text
